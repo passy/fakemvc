@@ -24,7 +24,7 @@ env:
         # travis encrypt GH_OAUTH_TOKEN=XXXXXXXXXXXXXXX
         #
         # User specific env variables
-        - secure: "N8Gg68sSDz75W9FkUVgDOb5Q5BJ5PMYT3BhEmiqHwhTpF3wGv3+LquwS7cmr4+ddCC40Wt++GTrDLv1fAaMSjBK1WA0Pt/WIUvX9PgoQVfBMGc/TFJFK/ZvZcQQ+xAnR/Q05J1ij4dbt/DDYop7V9B/zq381AlVTxE15E6saDs0="
+        - secure: N8Gg68sSDz75W9FkUVgDOb5Q5BJ5PMYT3BhEmiqHwhTpF3wGv3+LquwS7cmr4+ddCC40Wt++GTrDLv1fAaMSjBK1WA0Pt/WIUvX9PgoQVfBMGc/TFJFK/ZvZcQQ+xAnR/Q05J1ij4dbt/DDYop7V9B/zq381AlVTxE15E6saDs0=
         - GH_OWNER: passy
         - GH_PROJECT_NAME: fakemvc
 
@@ -47,4 +47,4 @@ after_success:
     - git config user.name "Travis Bot"
     - git commit -am "adding the yeoman build files to gh-pages [ci skip]"
     # Any command that using GH_OAUTH_TOKEN must pipe the output to /dev/null to not expose your oauth token
-    - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages
+    - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages > /dev/null 2>&1
