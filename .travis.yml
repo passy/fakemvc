@@ -13,9 +13,20 @@ branches:
         - master
 env:
     global:
-        - secure: "NXl7aQiiJMOidcMqRz/FRmUUvmpPL2Kb+ucPxxXFSSN+Gd+ldcsjN069NHvW1Qj33S0y9Ilz+R3k7CHUSeAVejl3SINgvOd++D9iAG3cQXzFLPCBhLbhPlcZVsp8b+KtuzKR9urFh0Q+99YUb+JIte2LvpUjI2lG7aV1QEGeDX0="
-        - GH_OWNER=passy
-        - GH_PROJECT_NAME=fakemvc
+        # GH_OAUTH_TOKEN is the oauth token generated as described at
+        # https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
+        #
+        # curl -u 'username' -d '{"scopes":["repo"],"note":"push to gh-pages from travis"}' https://api.github.com/authorizations
+        #
+        # It must be encrypted using the travis gem
+        # http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables
+        #
+        # travis encrypt GH_OAUTH_TOKEN=XXXXXXXXXXXXXXX
+        #
+        # User specific env variables
+        - secure: "axely92Xxz78GWtGgW0vVnuA+eCqTMLwOhP888b3s0OVwbGKpMRivicR7mgGXQeCwsMA0IfQmu16pviLeM3J2/58nStUsSzo3UtbszFngSdVSlkTW9LzZLVJrnpKtC62hsDGuDLXWrkBq39CI0ALR25eIbbsfPHIyOWbkPJWkXw="
+        - GH_OWNER: passy
+        - GH_PROJECT_NAME: fakemvc
 
 before_script:
     # install dependencies
@@ -36,4 +47,4 @@ after_success:
     - git config user.name "Travis Bot"
     - git commit -am "adding the yeoman build files to gh-pages [ci skip]"
     # Any command that using GH_OAUTH_TOKEN must pipe the output to /dev/null to not expose your oauth token
-    - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages
+    - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages > /dev/null 2>&1
