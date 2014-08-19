@@ -13,7 +13,7 @@ branches:
         - master
 env:
     global:
-        - secure: N8Gg68sSDz75W9FkUVgDOb5Q5BJ5PMYT3BhEmiqHwhTpF3wGv3+LquwS7cmr4+ddCC40Wt++GTrDLv1fAaMSjBK1WA0Pt/WIUvX9PgoQVfBMGc/TFJFK/ZvZcQQ+xAnR/Q05J1ij4dbt/DDYop7V9B/zq381AlVTxE15E6saDs0=
+        - secure: "NXl7aQiiJMOidcMqRz/FRmUUvmpPL2Kb+ucPxxXFSSN+Gd+ldcsjN069NHvW1Qj33S0y9Ilz+R3k7CHUSeAVejl3SINgvOd++D9iAG3cQXzFLPCBhLbhPlcZVsp8b+KtuzKR9urFh0Q+99YUb+JIte2LvpUjI2lG7aV1QEGeDX0="
         - GH_OWNER=passy
         - GH_PROJECT_NAME=fakemvc
 
