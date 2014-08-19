@@ -13,20 +13,9 @@ branches:
         - master
 env:
     global:
-        # GH_OAUTH_TOKEN is the oauth token generated as described at
-        # https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
-        #
-        # curl -u 'username' -d '{"scopes":["repo"],"note":"push to gh-pages from travis"}' https://api.github.com/authorizations
-        #
-        # It must be encrypted using the travis gem
-        # http://about.travis-ci.org/docs/user/build-configuration/#Secure-environment-variables
-        #
-        # travis encrypt GH_OAUTH_TOKEN=XXXXXXXXXXXXXXX
-        #
-        # User specific env variables
         - secure: N8Gg68sSDz75W9FkUVgDOb5Q5BJ5PMYT3BhEmiqHwhTpF3wGv3+LquwS7cmr4+ddCC40Wt++GTrDLv1fAaMSjBK1WA0Pt/WIUvX9PgoQVfBMGc/TFJFK/ZvZcQQ+xAnR/Q05J1ij4dbt/DDYop7V9B/zq381AlVTxE15E6saDs0=
-        - GH_OWNER: passy
-        - GH_PROJECT_NAME: fakemvc
+        - GH_OWNER=passy
+        - GH_PROJECT_NAME=fakemvc
 
 before_script:
     # install dependencies
