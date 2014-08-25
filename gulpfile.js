@@ -39,19 +39,20 @@ gulp.task('images', function () {
 
 // Copy All Files At The Root Level (app)
 gulp.task('copy', function () {
-	return gulp.src([
-			'architecture-examples/**',
-			'dependency-examples/**',
-			'vanilla-examples/**',
-			'labs/**',
-			'learn.json',
-			'CNAME',
-			'.nojekyll'
-		], {
-			dot: true,
-			base: './'
-		}).pipe(gulp.dest('dist'))
-		.pipe($.size({title: 'copy'}));
+  return gulp.src([
+    'architecture-examples/**',
+    'dependency-examples/**',
+    'vanilla-examples/**',
+    'bower_components/**',
+    'labs/**',
+    'learn.json',
+    'CNAME',
+    '.nojekyll'
+  ], {
+    dot: true,
+    base: './'
+  }).pipe(gulp.dest('dist'))
+    .pipe($.size({title: 'copy'}));
 });
 
 // Compile and Automatically Prefix Stylesheets
@@ -70,19 +71,21 @@ gulp.task('styles', function () {
 gulp.task('html', function () {
 	var assets = $.useref.assets({searchPath: '{.tmp,.}'});
 
-	return gulp.src('index.html')
-		.pipe(assets)
-		// Concatenate And Minify JavaScript
-		.pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
-		// Concatenate And Minify Styles
-		.pipe($.if('*.css', $.csso()))
-		.pipe(assets.restore())
-		.pipe($.useref())
-		// Minify Any HTML
-		.pipe($.if('*.html', $.minifyHtml()))
-		// Output Files
-		.pipe(gulp.dest('dist'))
-		.pipe($.size({title: 'html'}));
+  return gulp.src('index.html')
+    .pipe(assets)
+    // Concatenate And Minify JavaScript
+    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    // Concatenate And Minify Styles
+    .pipe($.if('*.css', $.csso()))
+    .pipe(assets.restore())
+    .pipe($.useref())
+    // Output Files
+    .pipe(gulp.dest('dist'))
+    // Running vulcanize over the written output
+    // because it requires access to the written
+    // CSS and JS.
+    .pipe($.vulcanize({ dest: 'dist', strip: true }))
+    .pipe($.size({title: 'html'}));
 });
 
 // Clean Output Directory
@@ -90,7 +93,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-	runSequence('styles', ['jshint', 'html', 'images', 'copy'], cb);
+  runSequence(['styles', 'copy'], ['jshint', 'html', 'images'], cb);
 });
 
 // Run PageSpeed Insights

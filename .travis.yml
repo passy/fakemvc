@@ -24,9 +24,9 @@ env:
         # travis encrypt GH_OAUTH_TOKEN=XXXXXXXXXXXXXXX
         #
         # User specific env variables
-        - secure: "axely92Xxz78GWtGgW0vVnuA+eCqTMLwOhP888b3s0OVwbGKpMRivicR7mgGXQeCwsMA0IfQmu16pviLeM3J2/58nStUsSzo3UtbszFngSdVSlkTW9LzZLVJrnpKtC62hsDGuDLXWrkBq39CI0ALR25eIbbsfPHIyOWbkPJWkXw="
-        - GH_OWNER: passy
-        - GH_PROJECT_NAME: fakemvc
+        - secure: "fHgfjMpYuliwMr2QLnjYZExIViNrxprf9dhXRBLZ6P9Hz7P6m1BMYrI/xEG8X+fFbCi0+n3AXh8SEMHi9ou/Pty/cx12z4w/z3B2BHMxh4XBwpZHs+AB4IXkLiwwWoP4QFy4vTipgYnMDMq9CRhlRbhZEpenQBmaTEc472By1uM="
+        - GH_OWNER: tastejs
+        - GH_PROJECT_NAME: todomvc
 
 before_script:
     # install dependencies
@@ -44,7 +44,7 @@ after_success:
     - cp ../dist/.* .
     - git add -f .
     - git config user.email "travis@rdrei.net"
-    - git config user.name "Travis Bot"
-    - git commit -am "adding the yeoman build files to gh-pages [ci skip]"
+    - git config user.name "TasteBot"
+    - git commit -am "update the build files for gh-pages [ci skip]"
     # Any command that using GH_OAUTH_TOKEN must pipe the output to /dev/null to not expose your oauth token
     - git push https://${GH_OAUTH_TOKEN}@github.com/${GH_OWNER}/${GH_PROJECT_NAME} HEAD:gh-pages > /dev/null 2>&1
