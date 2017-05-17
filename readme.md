@@ -1,5 +1,7 @@
 # ![TodoMVC](media/logo.png)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/passy/fakemvc.svg)](https://greenkeeper.io/)
+
 > Helping you select an MV\* framework
 
 ### [Website](http://todomvc.com)&nbsp;&nbsp;&nbsp;&nbsp;[Blog](http://blog.tastejs.com)&nbsp;&nbsp;&nbsp;&nbsp;[TasteJS](http://tastejs.com)
